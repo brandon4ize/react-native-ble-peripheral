@@ -163,7 +163,7 @@ public class RNBLEModule extends ReactContextBaseJavaModule{
     };
 
     @ReactMethod
-    public void start(final Promise promise){
+    public void start(boolean connectable, final Promise promise){
         mBluetoothManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
         mBluetoothAdapter = mBluetoothManager.getAdapter();
         mBluetoothAdapter.setName(this.name);
@@ -179,7 +179,7 @@ public class RNBLEModule extends ReactContextBaseJavaModule{
         AdvertiseSettings settings = new AdvertiseSettings.Builder()
                 .setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_LOW_LATENCY)
                 .setTxPowerLevel(AdvertiseSettings.ADVERTISE_TX_POWER_HIGH)
-                .setConnectable(true)
+                .setConnectable(connectable)
                 .build();
 
 
